@@ -157,7 +157,7 @@ button {
 }
 
 main {
-  @apply mt-18 md:mt-0;
+  @apply mt-20 md:mt-0;
 }
 
 #app {

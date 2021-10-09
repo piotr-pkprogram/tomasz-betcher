@@ -47,7 +47,11 @@ export default {
 <style lang="scss" scoped>
 textarea,
 input {
-  @apply md:focus:bg-white border-black border-solid border-4 rounded-2xl resize-y p-2 w-full block min-h-12 transition-colors;
+  @apply md:focus:bg-white border-black border-solid border-4 resize-y p-2 w-full block min-h-12 transition-colors font-medium text-black;
+
+  &::placeholder {
+    @apply font-medium text-black text-xl;
+  }
 
   &:focus-visible {
     @apply outline-none;
