@@ -1,7 +1,7 @@
 <template>
   <the-header></the-header>
   <the-header type="phone"></the-header>
-  <main class="main-container">
+  <main>
     <router-view v-slot="slotProps">
       <transition name="route" mode="out-in">
         <component :is="slotProps.Component"></component>
@@ -50,10 +50,10 @@ export default {
 
       if (window.pageYOffset >= 370) {
         buttonTop.classList.remove("animate-hidden");
-        buttonTop.classList.add("block", "animate-appear");
+        buttonTop.classList.add("flex", "animate-appear");
       } else {
         buttonTop.classList.add("animate-hidden");
-        buttonTop.classList.remove("block", "animate-appear");
+        buttonTop.classList.remove("flex", "animate-appear");
       }
     },
     delayOfIframe() {
@@ -139,7 +139,7 @@ address,
 sub,
 sup {
   &::selection {
-    @apply text-main bg-gray-50;
+    @apply text-main bg-gray-300;
   }
 }
 
@@ -156,17 +156,13 @@ button {
   }
 }
 
+main {
+  @apply mt-18 md:mt-0;
+}
+
 #app {
   @media (min-width: 1921px) {
     width: 1920px;
-  }
-}
-
-.main-container {
-  @apply mt-20 md:mt-0;
-
-  & > section {
-    @apply min-h-screen;
   }
 }
 
@@ -213,14 +209,5 @@ button {
 .agree-enter-to,
 .agree-leave-from {
   opacity: 1;
-}
-
-.you-are-in-a-good-hands__video {
-  @apply shadow-lg bg-gray-200 mb-8 rounded-2xl row-start-3;
-  height: 350px;
-  width: 800px;
-  @media (max-width: 854px) {
-    @apply w-full;
-  }
 }
 </style>

@@ -1,7 +1,16 @@
-/*eslint-disable  prettier/prettier*/
+import Start from "../views/Start.vue";
+import About from "../views/About.vue";
 
-
-const routes = [
+const routes = [{
+        name: 'start',
+        path: '/index.html',
+        component: Start,
+        alias: "/"
+    },
+    {
+        path: "/kim-jestem",
+        component: About,
+    }
 
 ];
 

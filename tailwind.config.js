@@ -32,6 +32,7 @@ module.exports = {
             indigo: colors.indigo,
             purple: colors.violet,
             pink: colors.pink,
+            "3A": "#3a3a3a",
             'main': '#610302',
             "df": '#dfdfdf',
             f6: '#f6f6f6',
@@ -59,6 +60,7 @@ module.exports = {
             12: "3rem",
             14: "3.5rem",
             16: "4rem",
+            18: "4.5rem",
             20: "5rem",
             24: "6rem",
             28: "7rem",
@@ -448,6 +450,8 @@ module.exports = {
             4: "repeat(4, minmax(0, 1fr))",
             5: "repeat(5, minmax(0, 1fr))",
             6: "repeat(6, minmax(0, 1fr))",
+            '4/6': '40% 60%',
+            '1/2': '50% 50%'
         },
         height: (theme) => ({
             auto: "auto",

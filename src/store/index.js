@@ -12,17 +12,17 @@ export default createStore({
             },
             {
                 id: uuidv4(),
-                href: "/kim-jestem.html",
+                href: "/kim-jestem",
                 textValue: "Kim Jestem",
             },
             {
                 id: uuidv4(),
-                href: "/książki.html",
+                href: "/książki",
                 textValue: "Książki",
             },
             {
                 id: uuidv4(),
-                href: "/kontakt.html",
+                href: "/kontakt",
                 textValue: "Kontakt",
             },
         ],
@@ -40,7 +40,7 @@ export default createStore({
             },
         ],
         isPhoneMenuOpen: false,
-        IsFiframeTransform: false
+        IsFiframeTransform: false,
     },
     getters: {
         menuElements(state) {

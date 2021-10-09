@@ -7,15 +7,12 @@
       <span class="inline-block">
         <text-links
           classes="footer__link"
-          href="/subpages/privacy-policy.html"
+          href="/polityka-prywatności"
           :IsRouterLink="true"
         >
           &nbsp;Polityka Prywatności</text-links
         >,
-        <text-links
-          classes="footer__link"
-          href="/subpages/contact.html"
-          :IsRouterLink="true"
+        <text-links classes="footer__link" href="/kontakt" :IsRouterLink="true"
           >Kontakt</text-links
         >,
       </span>

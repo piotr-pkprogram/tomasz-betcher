@@ -132,14 +132,14 @@ export default {
 }
 
 .phone-header {
-  @apply grid grid-flow-col grid-cols-4/6 fixed top-0 z-20 w-full md:hidden bg-white max-h-36 min-h-58.5 border-solid filter drop-shadow-sm justify-items-center;
+  @apply grid grid-flow-col grid-cols-1/2 xs:grid-cols-4/6 fixed top-0 z-20 w-full md:hidden bg-white max-h-36 min-h-58.5 border-solid filter drop-shadow-sm justify-items-center;
 
   &__start-link {
     @apply w-max;
   }
 
   &__logo {
-    @apply w-44 max-w-full;
+    @apply w-44;
   }
 
   &__btn {
