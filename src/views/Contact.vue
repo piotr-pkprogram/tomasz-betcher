@@ -275,10 +275,11 @@ export default {
 
   &__send {
     @apply justify-self-start relative;
+    min-width: 113px !important;
   }
 
   &__loader {
-    @apply hidden bg-cover z-10 absolute top-1 left-22 border-transparent border-3 border-solid;
+    @apply hidden bg-cover z-10 absolute top-1 left-30 border-transparent border-3 border-solid;
     width: 2em;
     transform-origin: center;
     animation: rotate 2s linear infinite;

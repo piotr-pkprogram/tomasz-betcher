@@ -37,7 +37,6 @@ export default {
 button,
 a {
   @apply md:hover:opacity-80 transition-opacity w-max p-3 text-xl h-min;
-  width: 113px;
 }
 
 .dark-btn {
