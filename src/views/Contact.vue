@@ -306,6 +306,7 @@ export default {
 
 .loader-message {
   @apply text-black col-1/2 p-2 bg-f6 border-2 rounded-lg hidden;
+  max-width: 393px;
 }
 
 @keyframes rotate {
