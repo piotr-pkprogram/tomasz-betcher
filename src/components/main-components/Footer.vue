@@ -2,7 +2,7 @@
   <footer class="footer">
     <p class="footer__paragraph">
       <text-links classes="footer__link" href="mailto:mojaksiążka@autograf.pl"
-        >mojaksiążka@autograf.pl</text-links
+        >mojaksiazka@autograf.pl</text-links
       >,
       <span class="inline-block">
         <text-links
