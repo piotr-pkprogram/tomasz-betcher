@@ -5,8 +5,8 @@
         <div class="hello__desc-container">
           <h1 class="hello__full-name">Tomasz Betcher</h1>
           <p class="hello__desc">
-            Jestem pisarzem literatury obyczajowej, romantycznej, a także literatury
-            pięknej i autorem 4 książek.
+            Jestem autorem powieści obyczajowych, w których poruszam ważne wątki
+            społeczne.
           </p>
         </div>
       </div>
