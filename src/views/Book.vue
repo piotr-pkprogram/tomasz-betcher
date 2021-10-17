@@ -1,5 +1,9 @@
 <template>
-  <section class="books">
+  <div
+    class="book"
+    :style="`background-image:
+      url(${book.bg_img})`"
+  >
     <error-box v-if="error_visable.online">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -81,17 +85,12 @@
       <span>Wystąpił błąd {{ error_status }}</span>
       <span>Nie można wczytać książek</span>
     </error-box>
-    <div
-      class="books__book"
-      v-for="book in books"
-      :key="book.id"
-      :style="`background-image: url(${book.bg_img})`"
-    >
-      <img :src="book.src" :alt="book.alt" class="books__img" />
-      <div class="books__desc-container">
-        <h2 class="books__title-book">{{ book.title }}</h2>
-        <span class="books__genre">{{ book.genre }}</span>
-        <span class="books__review">
+    <div class="book__cta">
+      <img :src="book.src" :alt="book.alt" class="book__img" />
+      <div class="book__desc-container">
+        <h2 class="book__title-book">{{ book.title }}</h2>
+        <span class="book__genre">{{ book.genre }}</span>
+        <span class="book__review">
           <svg
             width="32"
             height="32"
@@ -115,13 +114,15 @@
         </span>
       </div>
       <base-button
-        classes="books__view dark-btn rounded-full"
-        type="router-link"
-        :to="book.link"
-        >Zobacz Książkę</base-button
-      >
+        classes="book__buy dark-btn rounded-full relative"
+        type="external-link"
+        :to="book.like_read"
+        >Zakup Książkę
+        <span class="book__btn-desc">na stronie lubimyczytać.pl</span>
+      </base-button>
     </div>
-  </section>
+    <p class="book__desc">{{ book.desc }}</p>
+  </div>
 </template>
 
 <script>
@@ -130,7 +131,7 @@ import { v4 as uuidv4 } from "uuid";
 export default {
   data() {
     return {
-      books: [],
+      book: {},
       error_visable: {
         online: false,
         server: false,
@@ -148,7 +149,7 @@ export default {
         .then((json) => {
           const booksArr = json.results.map((book) => book.properties).reverse();
 
-          const books = booksArr.map((book) => {
+          let books = booksArr.map((book) => {
             try {
               book.id = uuidv4();
               book.title = book.Tytuł.title[0].plain_text;
@@ -167,31 +168,34 @@ export default {
               delete book.Zdjęcie_książki;
               book.alt = book.Tekst_alternatywny.rich_text[0].plain_text;
               delete book.Tekst_alternatywny;
+              book.like_read = book.Link_do_lubimyczytać.url;
+              delete book.Link_do_lubimyczytać;
+              book.desc = book.Opis.rich_text[0].plain_text;
+              delete book.Opis;
 
               return book;
               // eslint-disable-next-line no-empty
             } catch {}
           });
+          books = books.filter((book) => book !== undefined);
 
-          this.books = books.filter((book) => book !== undefined);
+          const bookLink = this.$route.params.bookTitle;
+
+          this.book = books.find((book) => book.link === `/książki/${bookLink}`);
           setTimeout(() => {
             this.$store.commit("appearHiddenLoader", false);
           }, 750);
         })
         .catch((err) => {
-          const main = document.querySelector("main");
-
           setTimeout(() => {
             this.$store.commit("appearHiddenLoader", false);
-            if (!window.navigator.onLine) {
-              this.error_visable.online = true;
-              main.classList.remove("h-auto");
-            } else {
-              this.error_visable.server = true;
-              this.error_status = err.status;
-              main.classList.remove("h-auto");
-            }
           }, 500);
+
+          if (!window.navigator.onLine) this.error_visable.online = true;
+          else {
+            this.error_visable.server = true;
+            this.error_status = err.status;
+          }
         });
     },
   },
@@ -209,12 +213,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.books {
-  @apply grid gap-20;
+.book {
+  @apply grid gap-20 bg-no-repeat bg-cover p-5 justify-center;
+  background-position: bottom;
 
-  &__book {
-    @apply bg-no-repeat grid justify-items-center p-5 pb-7 bg-cover gap-y-3;
-    background-position: bottom;
+  &__cta {
+    @apply grid justify-items-center p-5 gap-y-3;
+    max-width: 1300px;
     @media (min-width: 320px) {
       justify-items: normal;
     }
@@ -261,7 +266,7 @@ export default {
     }
   }
 
-  &__view {
+  &__buy {
     @apply self-end;
     @media (min-width: 500px) {
       @apply row-start-2 justify-self-end;
@@ -270,6 +275,15 @@ export default {
     @media (min-width: 950px) {
       @apply row-start-1;
     }
+  }
+  &__btn-desc {
+    @apply absolute left-0 -bottom-6 w-full text-black text-center;
+    font-size: 13px;
+  }
+
+  &__desc {
+    @apply p-5 bg-white bg-opacity-75 rounded-3xl justify-self-center text-xl;
+    max-width: 1300px;
   }
 }
 </style>

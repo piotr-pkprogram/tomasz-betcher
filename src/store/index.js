@@ -41,47 +41,7 @@ export default createStore({
         ],
         isPhoneMenuOpen: false,
         IsFiframeTransform: false,
-        books: [{
-                id: uuidv4(),
-                title: "Szeptun",
-                genre: "Literatura obyczajowa, romans",
-                review: "7,3 / 10",
-                link: "/książki/szeptun",
-                bg_img: require("../assets/img/books/ogromna-zielona-łąka-z-drzewami-w-niektórych-miejscach.jpg"),
-                src: require("../assets/img/books/książka-szeptun-tomasza-betchera.jpg"),
-                alt: "Okładka książki Szeptun Tomasza Betcher, przedstawiająca kobietę i mężczyznę przytulających się do sibie, który znajdują się w lesie na jakiejś skale i wpatrują się w góry."
-            },
-            {
-                id: uuidv4(),
-                title: "Wigilijne Opowieści",
-                genre: "Literatura piękna",
-                review: "7,1 / 10",
-                link: "/książki/wigilijne-opowieści",
-                bg_img: require("../assets/img/books/kilka-świątecznych-prezentów-leżących-na-ciemnobrązowym-stole.jpg"),
-                src: require("../assets/img/books/książka-wigilijne-opowieści-tomasza-betchera.jpg"),
-                alt: "Okładka Książki Wigilijne Opowieści Tomasza Betchera przedstawiająca czerwone woreczki świateczne z jakimiś prezentami, ułożone w czterech rzędach na białym tle."
-            },
-            {
-                id: uuidv4(),
-                title: "Szczęście z piernika",
-                genre: "Literatura obyczajowa, romans",
-                review: "7,2 / 10",
-                link: "/książki/szczęście-z-piernika",
-                bg_img: require("../assets/img/books/kilka-świeżych-pierników-leżących-w-misce-do-okołagałązki-świerku.jpg"),
-                src: require("../assets/img/books/okładka-książki-szczęście-z-piernika-tomasza-betchera.jpg"),
-                alt: "Okładka książki Szczęście z piernika Tomasza Betchera przedstawiająca łańcuszek ze świątecznych ozdub na zielonym tle."
-            },
-            {
-                id: uuidv4(),
-                title: "Tam gdzie jesteś",
-                genre: "Literatura obyczajowa, romans",
-                review: "7,5 / 10",
-                link: "/książki/tam-gdzie-jesteś",
-                bg_img: require("../assets/img/books/mężczyzna-płynący-po-jeziorze-łódką-wśród-lasu-i-gór.jpg"),
-                src: require("../assets/img/books/okładka-ksiązki-tam-gdzie-jesteś-tomasza-betcher.jpg"),
-                alt: "Okładka książki Tam gdzie jesteś Tomasza Betchera przedstawiająca kobietę i mężczyznę całujących się na białym tle, a u góry samotną łódkę znajdującą się na jeziorze"
-            },
-        ]
+
     },
     getters: {
         menuElements(state) {
@@ -96,9 +56,6 @@ export default createStore({
         IsFiframeTransform(state) {
             return state.IsFiframeTransform;
         },
-        books(state) {
-            return state.books;
-        }
     },
     mutations: {
         openClosePhoneMenu(state) {
@@ -150,6 +107,20 @@ export default createStore({
         setLocalStorage(_, item) {
             localStorage.setItem(item.name, item.value);
         },
+        appearHiddenLoader(_, switchLoader) {
+            const loader = document.querySelector('.loading');
+            const main = document.querySelector('main');
+
+            if (switchLoader) {
+                loader.classList.remove("animate-hidden");
+                loader.classList.add("grid");
+                main.classList.remove("overflow-visible", "h-auto");
+            } else {
+                loader.classList.add("animate-hidden");
+                loader.classList.remove("grid");
+                main.classList.add("overflow-visible", "h-auto")
+            }
+        }
     },
     actions: {
         setLocalStorage(ctx, item) {

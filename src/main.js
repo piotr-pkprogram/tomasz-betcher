@@ -14,6 +14,8 @@ const BaseButton = defineAsyncComponent(() =>
 const BaseInput = defineAsyncComponent(() =>
     import ("./components/UI/BaseInput.vue")
 )
+const ErrorBox = defineAsyncComponent(() =>
+    import ("./components/UI/ErrorBox.vue"));
 
 const app = createApp(App);
 
@@ -23,5 +25,6 @@ app.use(router)
 app.component('text-links', TextLinks);
 app.component('base-button', BaseButton);
 app.component('base-input', BaseInput);
+app.component('error-box', ErrorBox);
 
 app.mount("#app");

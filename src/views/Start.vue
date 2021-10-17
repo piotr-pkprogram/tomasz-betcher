@@ -65,6 +65,7 @@ export default {
     if (this.$store.getters.isPhoneMenuOpen) {
       this.$store.commit("openClosePhoneMenu");
     }
+    this.$store.commit("appearHiddenLoader", true);
     next();
   },
 };
@@ -124,7 +125,7 @@ export default {
   }
 
   &__slider-container {
-    @apply w-full grid;
+    @apply w-full grid relative;
     @media (min-width: 815px) {
       @apply w-auto;
     }

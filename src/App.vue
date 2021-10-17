@@ -2,6 +2,7 @@
   <the-header></the-header>
   <the-header type="phone"></the-header>
   <main>
+    <loading></loading>
     <router-view v-slot="slotProps">
       <transition name="route" mode="out-in">
         <component :is="slotProps.Component"></component>
@@ -24,6 +25,7 @@ import AgreeWidget from "./components/main-components/agreeWidget.vue";
 import ButtonTop from "./components/main-components/ButtonTop.vue";
 import TheHeader from "./components/main-components/header/Header.vue";
 import TheFooter from "./components/main-components/Footer.vue";
+import Loading from "./components/main-components/Loading.vue";
 
 export default {
   components: {
@@ -31,6 +33,7 @@ export default {
     TheFooter,
     ButtonTop,
     AgreeWidget,
+    Loading,
   },
   methods: {
     menuAnimation() {
@@ -92,6 +95,7 @@ export default {
     if (document.cookie.includes("agreePrivacyPolicy=true")) {
       agreeWidget.remove();
     }
+    this.$store.commit("appearHiddenLoader", true);
   },
 };
 </script>
@@ -113,6 +117,11 @@ body {
   @media (min-width: 1921px) {
     @apply justify-center;
   }
+}
+
+main {
+  @apply relative overflow-hidden;
+  height: 80.5vh;
 }
 
 p,

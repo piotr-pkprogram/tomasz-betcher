@@ -1,6 +1,6 @@
 <template>
   <li :class="classes">
-    <a rel="noopnener noreferrer" :href="href">
+    <a rel="noopnener noreferrer" :href="href" target="_blank">
       <img
         :class="type === 'phone' ? 'h-5' : ''"
         :src="

@@ -1,7 +1,13 @@
-import Start from "../views/Start.vue";
-import About from "../views/About.vue";
-import Contact from "../views/Contact.vue";
-import Books from "../views/Books.vue";
+const Start =
+    import ("../views/Start.vue");
+const About =
+    import ("../views/About.vue");
+const Contact =
+    import ("../views/Contact.vue");
+const Books =
+    import ("../views/Books.vue");
+const Book =
+    import ('../views/Book.vue');
 
 const routes = [{
         name: 'start',
@@ -23,6 +29,11 @@ const routes = [{
         name: 'contact',
         path: "/kontakt",
         component: Contact,
+    },
+    {
+        name: 'book',
+        path: "/książki/:bookTitle",
+        component: Book,
     }
 ];
 

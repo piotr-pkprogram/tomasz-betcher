@@ -191,6 +191,7 @@ export default {
     if (this.$store.getters.isPhoneMenuOpen) {
       this.$store.commit("openClosePhoneMenu");
     }
+    this.$store.commit("appearHiddenLoader", true);
     next();
   },
   mounted() {
@@ -202,6 +203,10 @@ export default {
     const recaptchaJs = document.createElement("script");
     recaptchaJs.setAttribute("src", "https://www.google.com/recaptcha/api.js");
     document.head.appendChild(recaptchaJs);
+
+    setTimeout(() => {
+      this.$store.commit("appearHiddenLoader", false);
+    }, 500);
   },
 };
 </script>
