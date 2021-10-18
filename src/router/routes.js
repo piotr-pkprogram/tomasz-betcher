@@ -9,6 +9,9 @@ const Books =
 const Book =
     import ('../views/Book.vue');
 
+const PrivacyPolicy =
+    import ("../views/PrivacyPolicy.vue");
+
 const routes = [{
         name: 'start',
         path: '/index.html',
@@ -34,6 +37,11 @@ const routes = [{
         name: 'book',
         path: "/książki/:bookTitle",
         component: Book,
+    },
+    {
+        name: 'privacy-policy',
+        path: "/polityka-prywatności",
+        component: PrivacyPolicy,
     }
 ];
 

@@ -7,7 +7,7 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
-<Directory /api/>
+<Files *.php>
 deny from all
-</Directory>
+</Files>
 

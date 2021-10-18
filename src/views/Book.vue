@@ -141,6 +141,7 @@ export default {
   },
   methods: {
     async getBooks() {
+      // await fetch("/getBooks.php")
       await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
         .then((res) => {
           if (res.ok) return res.json();
@@ -187,15 +188,19 @@ export default {
           }, 750);
         })
         .catch((err) => {
+          const main = document.querySelector("main");
+
           setTimeout(() => {
             this.$store.commit("appearHiddenLoader", false);
+            if (!window.navigator.onLine) {
+              this.error_visable.online = true;
+              main.classList.remove("h-auto");
+            } else {
+              this.error_visable.server = true;
+              this.error_status = err.status;
+              main.classList.remove("h-auto");
+            }
           }, 500);
-
-          if (!window.navigator.onLine) this.error_visable.online = true;
-          else {
-            this.error_visable.server = true;
-            this.error_status = err.status;
-          }
         });
     },
   },
