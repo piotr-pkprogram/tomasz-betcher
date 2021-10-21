@@ -140,8 +140,8 @@ export default {
   },
   methods: {
     async getBooks() {
-      // await fetch("/getBooks.php")
-      await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+        // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+      await fetch("/getBooks.php")
         .then((res) => {
           if (res.ok) return res.json();
           else throw new Error("Wystąpił błąd");
@@ -168,6 +168,10 @@ export default {
               delete book.Zdjęcie_książki;
               book.alt = book.Tekst_alternatywny.rich_text[0].plain_text;
               delete book.Tekst_alternatywny;
+              book.like_read = book.Link_do_lubimyczytać.url;
+              delete book.Link_do_lubimyczytać;
+              book.desc = book.Opis.rich_text[0].plain_text;
+              delete book.Opis;
 
               return book;
               // eslint-disable-next-line no-empty

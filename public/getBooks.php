@@ -14,7 +14,7 @@ $categoryData = curl_exec($ch);
 
 curl_close($ch);
 
-header('Access-Control-Allow-Origin: tomasz-betcher.infinityfreeapp.com');
+header('Access-Control-Allow-Origin: tomasz-betcher.pl');
 header('Content-Type: application/json');
     echo $categoryData;
 

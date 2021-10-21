@@ -7,7 +7,3 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
-<Files *.php>
-deny from all
-</Files>
-

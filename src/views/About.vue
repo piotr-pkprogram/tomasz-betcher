@@ -40,7 +40,7 @@ export default {
           alt:
             "Tomasz Betcher leżący na hamaku, czytający książkę pod drzewem w ogrodzie przy drewnianym domku",
           text:
-            "W czasie, gdy nie pisze, swój czas wolny spędzam czas z rodziną, oddaję się nocnym obserwacjom nieba, eksperymentuję w kuchni i czytam. Szczególną miłością darzę historię lotnictwa, głównie II wojny światowej. Lubię małe i duże podróże.",
+            "W czasie, gdy nie pisze, swój czas wolny spędzam z rodziną, oddaję się nocnym obserwacjom nieba, eksperymentuję w kuchni i czytam. Szczególną miłością darzę historię lotnictwa, głównie II wojny światowej. Lubię małe i duże podróże.",
         },
       ],
     };

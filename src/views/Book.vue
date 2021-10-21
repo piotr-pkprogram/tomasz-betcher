@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="book"
-    :style="`background-image:
-      url(${book.bg_img})`"
-  >
+  <div class="book" :style="`background-image: url(${book.bg_img})`">
     <error-box v-if="error_visable.online">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -141,8 +137,8 @@ export default {
   },
   methods: {
     async getBooks() {
-      // await fetch("/getBooks.php")
-      await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+      // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+      await fetch("/getBooks.php")
         .then((res) => {
           if (res.ok) return res.json();
           else throw new Error("Wystąpił błąd");
@@ -219,7 +215,7 @@ export default {
 
 <style lang="scss" scoped>
 .book {
-  @apply grid gap-20 bg-no-repeat bg-cover p-5 justify-center;
+  @apply grid gap-20 bg-no-repeat bg-cover p-5 justify-center relative;
   background-position: bottom;
 
   &__cta {
