@@ -121,7 +121,7 @@ body {
 
 main {
   @apply relative overflow-hidden;
-  height: 80.5vh;
+  height: 82vh;
 }
 
 p,

@@ -151,8 +151,8 @@ export default {
           this.$store.commit("appearHiddenLoader", false);
         }, 750);
       } else {
-        // await fetch("/getBooks.php")
-        await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+        //   await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+        await fetch("/getBooks.php")
           .then((res) => {
             if (res.ok) return res.json();
             else throw new Error("Wystąpił błąd");
@@ -263,6 +263,7 @@ export default {
 .book {
   @apply grid gap-20 bg-no-repeat bg-cover p-5 justify-center relative;
   background-position: bottom;
+  min-height: 82vh;
 
   &__cta {
     @apply grid justify-items-center p-5 gap-y-3;

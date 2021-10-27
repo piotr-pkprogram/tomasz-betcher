@@ -25,7 +25,7 @@ const routes = [{
             title: "Tomasz Betcher - Autor powieści obyczajowych i romantycznych poruszjący wątki społeczne.",
             metaTags: [{
                     name: 'description',
-                    content: ''
+                    content: 'Cześć, jestem Tomasz betcher - pisarz i autor wielu książek literatury romantyczno - obyczajowej, w których poruszam różnorakie wątki społeczne. Interesuje Cię ta tematyka? Zapraszam po więcej.'
                 },
                 {
                     property: 'keywords',
@@ -37,7 +37,7 @@ const routes = [{
                 },
                 {
                     property: 'og:description',
-                    content: ''
+                    content: 'Cześć, jestem Tomasz betcher - pisarz i autor wielu książek literatury romantyczno - obyczajowej, w których poruszam różnorakie wątki społeczne. Interesuje Cię ta tematyka? Zapraszam po więcej.'
                 },
                 {
                     property: 'og:site_name',
@@ -67,11 +67,11 @@ const routes = [{
             title: "Kim Jestem | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
-                    content: ''
+                    content: 'Chcesz poznać mnie dokładniej lub interesuje Cię moja histroia jako pisarza? Zapraszam tutaj :).'
                 },
                 {
                     property: 'keywords',
-                    content: 'ojciec dwójki dzieci i pisarz, ojeciec dwójki dzieci, tomasz betcher, tomasz betcher debiut powieści tam gdzie jesteś, szptun, szcęście z piernika, żołnierskie serce, czas wolny z rodziną'
+                    content: 'tomasz betcher literatura obyczajowa, tomasz betcher literatura piękna, tomasz betcher romans, ojciec dwójki dzieci i pisarz, ojeciec dwójki dzieci, tomasz betcher, tomasz betcher debiut powieści tam gdzie jesteś, szptun, szcęście z piernika, żołnierskie serce, czas wolny z rodziną'
                 },
                 {
                     property: 'og:title',
@@ -79,7 +79,7 @@ const routes = [{
                 },
                 {
                     property: 'og:description',
-                    content: ''
+                    content: 'Chcesz poznać mnie dokładniej lub interesuje Cię moja histroia jako pisarza? Zapraszam tutaj :).'
                 },
                 {
                     property: 'og:site_name',
@@ -109,11 +109,11 @@ const routes = [{
             title: "Książki | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
-                    content: ''
+                    content: 'Szukasz wciągających powieści pełnych emocji i róznorakich wątków? Chcesz zagłębić się w ciekawe histrie, które wzbudzą twoją wyobraźnię? Zajrzyj do moich książek, z pewnością coś przypadnie Ci do gustu.'
                 },
                 {
                     property: 'keywords',
-                    content: ''
+                    content: 'tomasz betcher literatura obyczajowa, tomasz betcher literatura piękna, tomasz betcher romans, książki tomasza betchera, książki tomasz betcher, literatura obyczjowa, romans, literatura piękna, książki romantyczne, poezja, utwory poetyckie, utwory romantyczne'
                 },
                 {
                     property: 'og:title',
@@ -121,7 +121,7 @@ const routes = [{
                 },
                 {
                     property: 'og:description',
-                    content: ''
+                    content: 'Szukasz wciągających powieści pełnych emocji i róznorakich wątków? Chcesz zagłębić się w ciekawe histrie, które wzbudzą twoją wyobraźnię? Zajrzyj do moich książek, z pewnością coś przypadnie Ci do gustu.'
                 },
                 {
                     property: 'og:site_name',
@@ -152,11 +152,11 @@ const routes = [{
             title: "Konatkt | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
-                    content: ''
+                    content: 'Masz jakieś pyatnia do mnie lub chcesz moje ksiązki podarować komuś z dedykacją. Skontaktuj się ze mną, a napweno się dogadamy :).'
                 },
                 {
                     property: 'keywords',
-                    content: ''
+                    content: 'tomasz betcher, tomasz-betcher.pl, kontakt do tomasz betcher, kontakt do pisarza tomasz betcher, kontakt do pisarza tomasza betchera, tomasz betcher literatura obyczajowa, tomasz betcher literatura piękna, tomasz betcher romans'
                 },
                 {
                     property: 'og:title',
@@ -164,7 +164,7 @@ const routes = [{
                 },
                 {
                     property: 'og:description',
-                    content: ''
+                    content: 'Masz jakieś pyatnia do mnie lub chcesz moje ksiązki podarować komuś z dedykacją. Skontaktuj się ze mną, a napweno się dogadamy :).'
                 },
                 {
                     property: 'og:site_name',
@@ -199,11 +199,11 @@ const routes = [{
             title: "Polityka Prywatności",
             metaTags: [{
                     name: 'description',
-                    content: ''
+                    content: 'Polityka prywatności opisuje zasady przetwarzania przez nas informacji na Twój temat, w tym danych osobowych oraz ciasteczek, czyli tzw. cookies.'
                 },
                 {
                     property: 'keywords',
-                    content: ''
+                    content: 'tomasz betcher literatura obyczajowa, tomasz betcher literatura piękna, tomasz betcher romans, polityka prywatnosci tomasza betchera, polityka prywatności tomasz-betcher.pl, polityka cookies tomasza betchera, polityka cookies tomasz-betcher.pl'
                 },
                 {
                     property: 'og:title',
@@ -211,7 +211,7 @@ const routes = [{
                 },
                 {
                     property: 'og:description',
-                    content: ''
+                    content: 'Polityka prywatności opisuje zasady przetwarzania przez nas informacji na Twój temat, w tym danych osobowych oraz ciasteczek, czyli tzw. cookies.'
                 },
                 {
                     property: 'og:site_name',
