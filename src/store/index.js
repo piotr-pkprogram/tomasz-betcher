@@ -107,6 +107,9 @@ export default createStore({
         setLocalStorage(_, item) {
             localStorage.setItem(item.name, item.value);
         },
+        setBookLocalStorage(_, item) {
+            localStorage.setItem(item.title, JSON.stringify(item));
+        },
         appearHiddenLoader(_, switchLoader) {
             const loader = document.querySelector('.loading');
             const main = document.querySelector('main');

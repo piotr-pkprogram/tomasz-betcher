@@ -169,12 +169,8 @@ export default {
               book.src = book.Zdjęcie_książki.files[0].file.url;
               delete book.Zdjęcie_książki;
               delete book.Ocena;
-              book.link = book.Link.url;
-              delete book.Link;
               book.bg_img = book.Zdjęcie_w_tle.files[0].file.url;
               delete book.Zdjęcie_w_tle;
-              book.src = book.Zdjęcie_książki.files[0].file.url;
-              delete book.Zdjęcie_książki;
               book.alt = book.Tekst_alternatywny.rich_text[0].plain_text;
               delete book.Tekst_alternatywny;
               book.like_read = book.Link_do_lubimyczytać.url;
@@ -186,7 +182,6 @@ export default {
               // eslint-disable-next-line no-empty
             } catch {}
           });
-
           this.slides = slides.filter((book) => book !== undefined);
           setTimeout(() => {
             this.$store.commit("appearHiddenLoader", false);
@@ -205,7 +200,7 @@ export default {
         });
     },
   },
-  created() {
+  mounted() {
     this.getSlides();
   },
 };

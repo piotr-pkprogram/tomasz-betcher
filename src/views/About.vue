@@ -75,6 +75,7 @@ export default {
   }
 
   &__img {
+      @apply rounded-3xl;
     &--second {
       @media (min-width: 630px) {
         @apply col-start-2;

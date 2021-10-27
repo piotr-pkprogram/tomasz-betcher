@@ -19,7 +19,7 @@ const routes = [{
         alias: "/",
         meta: {
             publicRoute: true,
-            title: "",
+            title: "Tomasz Betcher - Autor powieści obyczajowych i romantycznych poruszjący wątki społeczne.",
             metaTags: [{
                     name: 'description',
                     content: ''
@@ -30,7 +30,7 @@ const routes = [{
                 },
                 {
                     property: 'og:title',
-                    content: ''
+                    content: 'Tomasz Betcher - autor powieści obyczajowych i romantycznych poruszjący wątki społeczne.'
                 },
                 {
                     property: 'og:description',
@@ -61,7 +61,7 @@ const routes = [{
         component: About,
         meta: {
             publicRoute: true,
-            title: "",
+            title: "Kim Jestem | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
                     content: ''
@@ -72,7 +72,7 @@ const routes = [{
                 },
                 {
                     property: 'og:title',
-                    content: ''
+                    content: 'Kim Jestem | Tomasz Betcher'
                 },
                 {
                     property: 'og:description',
@@ -103,7 +103,7 @@ const routes = [{
         component: Books,
         meta: {
             publicRoute: true,
-            title: "",
+            title: "Książki | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
                     content: ''
@@ -114,7 +114,7 @@ const routes = [{
                 },
                 {
                     property: 'og:title',
-                    content: ''
+                    content: 'Książki | Tomasz Betcher'
                 },
                 {
                     property: 'og:description',
@@ -146,7 +146,7 @@ const routes = [{
         component: Contact,
         meta: {
             publicRoute: true,
-            title: "",
+            title: "Konatkt | Tomasz Betcher",
             metaTags: [{
                     name: 'description',
                     content: ''
@@ -157,7 +157,7 @@ const routes = [{
                 },
                 {
                     property: 'og:title',
-                    content: ''
+                    content: 'Konatkt | Tomasz Betcher'
                 },
                 {
                     property: 'og:description',
@@ -186,7 +186,6 @@ const routes = [{
         name: 'book',
         path: "/książki/:bookTitle",
         component: Book,
-
     },
     {
         name: 'privacy-policy',
@@ -194,7 +193,7 @@ const routes = [{
         component: PrivacyPolicy,
         meta: {
             publicRoute: true,
-            title: "",
+            title: "Polityka Prywatności",
             metaTags: [{
                     name: 'description',
                     content: ''
@@ -205,7 +204,7 @@ const routes = [{
                 },
                 {
                     property: 'og:title',
-                    content: ''
+                    content: 'Polityka Prywatności'
                 },
                 {
                     property: 'og:description',

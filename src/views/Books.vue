@@ -140,7 +140,7 @@ export default {
   },
   methods: {
     async getBooks() {
-        // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+      // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
       await fetch("/getBooks.php")
         .then((res) => {
           if (res.ok) return res.json();
@@ -172,6 +172,14 @@ export default {
               delete book.Link_do_lubimyczytać;
               book.desc = book.Opis.rich_text[0].plain_text;
               delete book.Opis;
+              book.meta_desc = book.meta_opis.rich_text[0]
+                ? book.meta_opis.rich_text[0].plain_text
+                : "";
+              delete book.meta_opis;
+              book.keywords = book.słowa_kluczowe.rich_text[0]
+                ? book.słowa_kluczowe.rich_text[0].plain_text
+                : "";
+              delete book.słowa_kluczowe;
 
               return book;
               // eslint-disable-next-line no-empty
@@ -200,10 +208,14 @@ export default {
         });
     },
   },
-  created() {
+  mounted() {
     this.getBooks();
   },
   beforeRouteLeave(_, __, next) {
+    this.books.forEach((book) => {
+      this.$store.commit("setBookLocalStorage", book);
+    });
+
     if (this.$store.getters.isPhoneMenuOpen) {
       this.$store.commit("openClosePhoneMenu");
     }

@@ -123,6 +123,9 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid";
+import addMetaTags from "./metaFunctions.js";
+
+let IsSetMeta = false;
 
 export default {
   data() {
@@ -137,70 +140,84 @@ export default {
   },
   methods: {
     async getBooks() {
-      // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
-      await fetch("/getBooks.php")
-        .then((res) => {
-          if (res.ok) return res.json();
-          else throw new Error("Wystąpił błąd");
-        })
-        .then((json) => {
-          const booksArr = json.results.map((book) => book.properties).reverse();
+      if (IsSetMeta) {
+        let title = this.$route.params.bookTitle;
 
-          let books = booksArr.map((book) => {
-            try {
-              book.id = uuidv4();
-              book.title = book.Tytuł.title[0].plain_text;
-              delete book.Tytuł;
-              book.genre = book.Gatunek.multi_select
-                .map((genre) => genre.name)
-                .join(", ");
-              delete book.Gatunek;
-              book.review = book.Ocena.rich_text[0].plain_text;
-              delete book.Ocena;
-              book.link = book.Link.url;
-              delete book.Link;
-              book.bg_img = book.Zdjęcie_w_tle.files[0].file.url;
-              delete book.Zdjęcie_w_tle;
-              book.src = book.Zdjęcie_książki.files[0].file.url;
-              delete book.Zdjęcie_książki;
-              book.alt = book.Tekst_alternatywny.rich_text[0].plain_text;
-              delete book.Tekst_alternatywny;
-              book.like_read = book.Link_do_lubimyczytać.url;
-              delete book.Link_do_lubimyczytać;
-              book.desc = book.Opis.rich_text[0].plain_text;
-              delete book.Opis;
+        const arr = title.split("");
+        title = arr.map((el, i) => (i == 0 ? el.toUpperCase() : el)).join("");
+        this.book = JSON.parse(localStorage.getItem(title.replace(/-/g, " ")));
 
-              return book;
-              // eslint-disable-next-line no-empty
-            } catch {}
+        setTimeout(() => {
+          this.$store.commit("appearHiddenLoader", false);
+        }, 750);
+      } else {
+        //   await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
+        await fetch("/getBooks.php")
+          .then((res) => {
+            if (res.ok) return res.json();
+            else throw new Error("Wystąpił błąd");
+          })
+          .then((json) => {
+            const booksArr = json.results.map((book) => book.properties).reverse();
+
+            let books = booksArr.map((book) => {
+              try {
+                book.id = uuidv4();
+                book.title = book.Tytuł.title[0].plain_text;
+                delete book.Tytuł;
+                book.genre = book.Gatunek.multi_select
+                  .map((genre) => genre.name)
+                  .join(", ");
+                delete book.Gatunek;
+                book.review = book.Ocena.rich_text[0].plain_text;
+                delete book.Ocena;
+                book.link = book.Link.url;
+                delete book.Link;
+                book.bg_img = book.Zdjęcie_w_tle.files[0].file.url;
+                delete book.Zdjęcie_w_tle;
+                book.src = book.Zdjęcie_książki.files[0].file.url;
+                delete book.Zdjęcie_książki;
+                book.alt = book.Tekst_alternatywny.rich_text[0].plain_text;
+                delete book.Tekst_alternatywny;
+                book.like_read = book.Link_do_lubimyczytać.url;
+                delete book.Link_do_lubimyczytać;
+                book.desc = book.Opis.rich_text[0].plain_text;
+                delete book.Opis;
+
+                return book;
+                // eslint-disable-next-line no-empty
+              } catch {}
+            });
+            books = books.filter((book) => book !== undefined);
+
+            const bookLink = this.$route.params.bookTitle;
+
+            this.book = books.find((book) => book.link === `/książki/${bookLink}`);
+            setTimeout(() => {
+              this.$store.commit("appearHiddenLoader", false);
+            }, 750);
+
+            addMetaTags(this.book);
+          })
+          .catch((err) => {
+            const main = document.querySelector("main");
+
+            setTimeout(() => {
+              this.$store.commit("appearHiddenLoader", false);
+              if (!window.navigator.onLine) {
+                this.error_visable.online = true;
+                main.classList.remove("h-auto");
+              } else {
+                this.error_visable.server = true;
+                this.error_status = err.status;
+                main.classList.remove("h-auto");
+              }
+            }, 500);
           });
-          books = books.filter((book) => book !== undefined);
-
-          const bookLink = this.$route.params.bookTitle;
-
-          this.book = books.find((book) => book.link === `/książki/${bookLink}`);
-          setTimeout(() => {
-            this.$store.commit("appearHiddenLoader", false);
-          }, 750);
-        })
-        .catch((err) => {
-          const main = document.querySelector("main");
-
-          setTimeout(() => {
-            this.$store.commit("appearHiddenLoader", false);
-            if (!window.navigator.onLine) {
-              this.error_visable.online = true;
-              main.classList.remove("h-auto");
-            } else {
-              this.error_visable.server = true;
-              this.error_status = err.status;
-              main.classList.remove("h-auto");
-            }
-          }, 500);
-        });
+      }
     },
   },
-  created() {
+  mounted() {
     this.getBooks();
   },
   beforeRouteLeave(_, __, next) {
@@ -208,6 +225,35 @@ export default {
       this.$store.commit("openClosePhoneMenu");
     }
     this.$store.commit("appearHiddenLoader", true);
+    next();
+  },
+  beforeRouteEnter(to, _from, next) {
+    let title = to.params.bookTitle;
+
+    const arr = title.split("");
+    title = arr.map((el, i) => (i == 0 ? el.toUpperCase() : el)).join("");
+    const book = JSON.parse(localStorage.getItem(title.replace(/-/g, " ")));
+
+    if (book) {
+      addMetaTags(book);
+      IsSetMeta = true;
+    }
+
+    next();
+  },
+  beforeRouteUpdate(to, _from, next) {
+    let title = to.params.bookTitle;
+
+    const arr = title.split("");
+    title = arr.map((el, i) => (i == 0 ? el.toUpperCase() : el)).join("");
+    const book = JSON.parse(localStorage.getItem(title).replace(/-/g, " "));
+    console.log(title);
+
+    if (book) {
+      addMetaTags(book);
+      IsSetMeta = true;
+    }
+
     next();
   },
 };
