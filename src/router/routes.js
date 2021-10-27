@@ -12,6 +12,9 @@ const Book = () =>
 const PrivacyPolicy = () =>
     import ("../views/PrivacyPolicy.vue");
 
+const CatchAll = () =>
+    import ("../views/CatchAll.vue");
+
 const routes = [{
         name: 'start',
         path: '/index.html',
@@ -228,6 +231,11 @@ const routes = [{
                 },
             ]
         }
+    },
+    {
+        name: 'error',
+        path: '/:catchAll(.*)',
+        component: CatchAll
     }
 ];
 

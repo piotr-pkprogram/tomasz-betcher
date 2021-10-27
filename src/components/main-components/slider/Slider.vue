@@ -148,8 +148,8 @@ export default {
   },
   methods: {
     async getSlides() {
-      // await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
-      await fetch("/getBooks.php")
+      // await fetch("/getBooks.php")
+      await fetch("http://localhost/tomasz-betcher.pl/getBooks.php")
         .then((res) => {
           if (res.ok) return res.json();
           else throw new Error("Wystąpił błąd");
